@@ -1,0 +1,19 @@
+.DisplayData .center {
+    text-align: center;
+}
+
+.DisplayData input {
+    height: 32px;
+    font-size: 20px;
+    box-shadow: 0 2px 3px #ccc;
+    margin: 10px 0px;
+    border-radius: 3px;
+    outline: none;
+}
+
+.DisplayData button {
+    background-color: aqua;
+    height: 32px;
+    font-size: 20px;
+    border-radius: 5px;
+}
