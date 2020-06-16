@@ -8,9 +8,17 @@ export const fetchDataSuccess = (data) => {
     }
 }
 
-export const fetchDataFail = () => {
+export const fetchDataSuccess2 = (data) => {
     return{
-        type:actionTypes.FETCH_DATA_FAIL
+        type:actionTypes.FETCH_DATA_SUCCESS2,
+        data2:data
+    }
+}
+
+export const fetchDataFail = (error) => {
+    return{
+        type:actionTypes.FETCH_DATA_FAIL,
+        error:error
     }
 }
 
@@ -22,10 +30,16 @@ export const fetchDataStart = () => {
 
 export const fetchData = (value) => {
     return dispatch => {
+        dispatch(fetchDataStart());
         axios.get(value)
-        .then(response => {
-            dispatch(fetchDataSuccess(response.data[0].PostOffice))
-            // console.log(response.data)
-        })
+            .then(response => {
+           
+            dispatch(fetchDataSuccess(response.data[0].PostOffice));
+           
+            dispatch(fetchDataSuccess2(response.data[0]["Message"]));
+           
+           }).catch(error=>{
+               dispatch(fetchDataFail(error));
+           })
     }
 }

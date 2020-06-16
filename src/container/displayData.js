@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import * as actions from '../store/actions/fetchData'
 import DataPara from '../components/dataPara'
 import './displayData.css'
+import Spinner from '../components/UI/spinner'
 
 class Orders extends Component{
 
@@ -20,10 +21,11 @@ class Orders extends Component{
     }
 
     render(){
-      
+
         let test2=[];
+        let ayush=null;
         
-        if(this.props.fetchDataList !== []){
+        if(this.props.data!=="No records found"){
             const test = Object.keys( this.props.fetchDataList).map((igKey) => {
                 return this.props.fetchDataList[igKey];
             })
@@ -32,8 +34,7 @@ class Orders extends Component{
                 test2.push(test[igsKey])
             }
         
-        }
-        const ayush = test2.map(name=>{
+         ayush = test2.map(name=>{
             return <DataPara name={name['Name']}
             district={name["District"]}
             BranchType={name["BranchType"]} 
@@ -45,6 +46,19 @@ class Orders extends Component{
             Division={name["Division"]} 
               />
         })
+
+        }else{
+            ayush=<p className="DisplayData"><div className="center Design">No records found ...</div></p>
+
+        }
+          
+        if(this.props.loading){
+            ayush=<Spinner/>
+        }
+
+        if(this.props.error){
+            ayush = <p className="DisplayData"><div className="center Design">Something went wrong ...</div></p>
+        }
 
         return(
           <div className='DisplayData'>
@@ -61,7 +75,10 @@ class Orders extends Component{
 
 const mapStateToProps = state =>{
     return{
-     fetchDataList:state.fetchData.data
+     fetchDataList:state.fetchData.data,
+     error:state.fetchData.error,
+     loading:state.fetchData.loading,
+     data:state.fetchData.data2
     }
 }
 

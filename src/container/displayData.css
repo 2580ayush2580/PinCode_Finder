@@ -2,12 +2,35 @@
     text-align: center;
 }
 
+.Design {
+    font-size: 20px;
+    font-weight: bold;
+    width: 70%;
+    /* border: 1px solid #eee; */
+    padding: 10px;
+    margin: 10px auto;
+    box-sizing: border-box;
+    /* box-shadow: 0 2px 3px #ccc; */
+}
+
+@media(min-width:700px) {
+    .Design {
+        margin-top: 10px;
+        width: 400px;
+        /* border: 1px solid #eee; */
+        padding: 10px;
+        margin: 10px auto;
+        box-sizing: border-box;
+        /* box-shadow: 0 2px 3px #ccc; */
+    }
+}
+
 .DisplayData input {
     height: 32px;
     font-size: 20px;
     box-shadow: 0 2px 3px #ccc;
     margin: 10px 0px;
-    border-radius: 3px;
+    border-radius: 5px;
     outline: none;
 }
 
@@ -15,5 +38,6 @@
     background-color: aqua;
     height: 32px;
     font-size: 20px;
+    box-shadow: 0 2px 3px #ccc;
     border-radius: 5px;
 }
