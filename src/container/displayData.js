@@ -9,7 +9,8 @@ class Orders extends Component{
 
     state={
         value:" ",
-        disableButton:true
+        searchByAddress:false,
+        placeholderValue:true
     }
 
     inputChangeHandler = (event)=>{
@@ -20,8 +21,14 @@ class Orders extends Component{
        
     }
 
-    render(){
+    searchHandler = () => {
+        this.setState(prevState => {
+            return { placeholderValue : ! prevState.placeholderValue}
+        })
+    }
 
+    render(){
+        
         let test2=[];
         let ayush=null;
         
@@ -63,9 +70,11 @@ class Orders extends Component{
         return(
           <div className='DisplayData'>
           <div className='center'>
-          <input  placeholder='Enter 6 digit Pin Code' onChange={(event)=>this.inputChangeHandler(event)} type="text"/>
+          <input  placeholder={this.state.placeholderValue ? "Enter 6 digit Pin Code" : "Enter Your Address"} onChange={(event)=>this.inputChangeHandler(event)} type="number"/>
           <br/>
               <button  onClick={()=>this.props.onFetchData(this.state.value)} >Submit</button>
+              <br/>
+              <button style={{marginTop:'10px'}}  onClick={this.searchHandler} >Search By {this.state.placeholderValue ? "Address" : "Pin" }</button>
           </div>
              {ayush}
           </div>
