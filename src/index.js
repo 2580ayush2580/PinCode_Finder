@@ -7,9 +7,11 @@ import {Provider} from 'react-redux'
 import { createStore , applyMiddleware , combineReducers } from 'redux'
 import thunk from 'redux-thunk'
 import fetchDataReducer from './store/reducers/fetchData'
+import fetchDataReducerByAddress from './store/reducers/fetchDataByAddress'
 
 const rootReducer = combineReducers({
-  fetchData:fetchDataReducer
+  fetchData:fetchDataReducer,
+  fetchDataByAddress:fetchDataReducerByAddress
 })
 
 

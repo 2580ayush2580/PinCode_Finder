@@ -8,7 +8,7 @@ const dataPara = (props)=>{
             <div className='DataPara'>
             <p>Post Office Name : {props.name}</p>
             <p>BranchType : {props.BranchType}</p>
-            <p>Block : {props.Block}</p>
+            {props.Block ? <p>Block : {props.Block}</p> : <p>Pin Code : {props.Pin}</p>}
             <p>Region : {props.Region}</p>
             <p>Division : {props.Division}</p>
             <p>District : {props.district}</p>
